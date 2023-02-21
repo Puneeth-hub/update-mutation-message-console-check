@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.model-container {
+  background-image: url('https://www.svgbackgrounds.com/wp-content/uploads/2021/05/subtle-prism-triangle-pattern.jpg');
+  color: black;
+  position: fixed;
+  margin-top: 80px;
+  top: 30px;
+  padding: 30px 50px;
+  right: 30px;
+  width: 30%;
+  font-weight: bold;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+}
+
+.model-mini-container {
+  display: flex;
+  align-items: start;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+input,
+textarea {
+  border: none;
+  padding: 6px 15px;
+  margin-top: 3px;
+  font-family: system-ui;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 184px;
+  min-height: 40px;
+  background-color: whitesmoke;
+  color:black;
+}
+
+input {
+  border-radius: 8px;
+  background-color: whitesmoke;
+  color: black;
+}
+
+.model-values {
+  text-align: center;
+  font-weight: bold;
+}
+
+.title {
+  text-align: center;
+}
+
+.button {
+  text-align: end;
+}
+
+button {
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 7px;
+  background: black;
+  font-size: small;
+  margin-top: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.messages-container {
+  padding: 50px;
+}
+
+
+
+.messages-container {
+  padding: 125px;
+}
+
+.read-or-hide {
+  color: darkblue;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.message-link {
+  width: 188px;
+  word-wrap: break-word;
+}
+
+.message-link >a{
+  color: rgb(29, 2, 124);
+}
+.loader-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+}
+.loading{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 35px;
+}
+.button-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
