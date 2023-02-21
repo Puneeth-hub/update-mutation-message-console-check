@@ -25,6 +25,7 @@ code {
   font-weight: bold;
   border-radius: 20px;
   background-repeat: no-repeat;
+  overflow: scroll;
 }
 
 .model-mini-container {
