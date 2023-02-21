@@ -6,7 +6,7 @@ import './App.css'
 
 function App(){
   const [pattern, setPattern] = useState({
-    Boolean:false,
+    boolean:false,
     messageId:null
   })
 
@@ -60,13 +60,14 @@ function App(){
 
   return(
     <div className='message-container'>
-    {data.messages.items?.map((message, index)=>
+    { data && data.messages.items?.map((message, index)=>
       <div key={index} className="messages">
             <p><strong>id:  </strong>{message.id}</p>
             <p><strong>subject:  </strong>{message.subject}</p>
             <div><strong>body:  </strong>
               {message.body.length >= 150 ? <checkMore prop={message.body} /> : message.body}
             </div>
+            
             <div className="button">
               <button onClick={() => setPattern({
                 boolean: true,

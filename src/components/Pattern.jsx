@@ -1,13 +1,8 @@
 import React, { useState } from 'react'
 import { useQuery, gql, useMutation } from '@apollo/client'
-import {Triangle} from 'react-loader-spinner'
 import './pattern.css' 
 
-export default function Pattern({setPattern, id}){
-    
-    const [formData, setFormData] = useState(null)
-    const [clicked, updateClicked] = useState('')
-    const GET_MESSAGES=gql`
+const GET_MESSAGES=gql`
       query MESSAGE_QUERY($id:String!){
         message(id:$id){
             id
@@ -27,9 +22,10 @@ export default function Pattern({setPattern, id}){
       }`;
 
 
-    const UPDATE_MESSAGE_MUTATION = gql`
-      mutation ($updateMessageInput:updateMessageInput!){
-        updateMessage(input:$updateMessageInput){
+      const UPDATE_MESSAGE_MUTATION = gql`
+      mutation UPDATE($input:updateMessageInput!){
+        updateMessage(input:$input){
+            id
             body
             subject
             
@@ -38,22 +34,34 @@ export default function Pattern({setPattern, id}){
 
     `
 
-    const {loading, error, data} = useQuery(GET_MESSAGES,{
+
+
+export default function Pattern({setPattern, id}){
+    
+    const [formData, setFormData] = useState({})
+    const [clicked, updateClicked] = useState(false)
+    
+
+    
+
+    const { data} = useQuery(GET_MESSAGES,{
         variables:{id:id},
         onCompleted:(data) =>{
-            setFormData(data?.message)
+            setFormData(data.message)
         }
     })
 
-    const onButtonClicked=((e)=>{
-        updateClicked('Successfully updated mutation go and checked console')
-    })
+    
 
     const [updateMutation] = useMutation(UPDATE_MESSAGE_MUTATION, {
         
         onCompleted:(data)=>{
             console.log('mutation successfull with', data);
+            updateClicked(true)
         },
+        onError:(error)=>{
+            console.log('error in mutation', error)
+        }
         
     })
 
@@ -64,15 +72,9 @@ export default function Pattern({setPattern, id}){
         })
     }
 
-    if(loading)return(
-        <div className="loader-container">
-        <Triangle visible={true} ariaLabel='triangle-loading' color='blue' />
-        <p className='loading'>Filling...!</p>
-    </div>
-    )
+    
 
-
-
+    
 
     return(
         <form className='model-container' onSubmit={(e)=>{
@@ -80,9 +82,11 @@ export default function Pattern({setPattern, id}){
             console.log("Data is on the way", formData)
             updateMutation({
                 variables:{
-                    updateMessageInput:{
-                    body:formData.body,
+                    input:{
+                    id:formData.id,
                     subject:formData.subject,
+                    body:formData.body,
+                    
                     
                 }
             }
@@ -94,7 +98,7 @@ export default function Pattern({setPattern, id}){
         <div className='model-mini-container'>
             <div className='model-values'>
                 <label>Id:</label><br/>
-                <input  disabled value={data?.message?.id} ></input>
+                <input  value={data?.message?.id} readOnly></input>
             </div>
             <div className='model-values'>
                 <label>Author:</label>
@@ -121,12 +125,12 @@ export default function Pattern({setPattern, id}){
         <div className="model-mini-container">
                 <div className="model-values">
                     <label>Language:</label><br />
-                    <input value={data?.message?.language} ></input>
+                    <input value={data?.message?.language} readOnly></input>
                 </div>
 
                 <div className="model-values">
                     <label>Views:</label><br />
-                    <input value={data?.message?.metrics.views} ></input>
+                    <input value={data?.message?.metrics.views} readOnly></input>
                 </div>
         </div>
 
@@ -140,17 +144,17 @@ export default function Pattern({setPattern, id}){
 
                 <div className="model-values">
                     <label>Post Time:</label><br />
-                    <textarea value={data?.message?.post_time} ></textarea>
+                    <textarea value={data?.message?.post_time}  readOnly></textarea>
                 </div>
             </div>
         <div className='button-container'>
-            <button className='button' type='submit' onClick={onButtonClicked}>Update</button>
+            <button className='button' type='submit' >Update</button>
             <button onClick={()=> setPattern({boolean:false})} className='button'>Close</button>
             
             
             
         </div>
-        <p>{clicked}</p>
+        {clicked ?  <p>Successfully updated mutation go and checked console</p> : ''}
     </form>
     )
 }
