@@ -19,9 +19,13 @@ p{
   
 }
 .boxes-container{
+  width: 100%;
   margin-top: 50px;
   padding: 50px;
+  background-color: whitesmoke;
+  height: 100vh;
 }
+
 
 .button{
   border: 2px solid white;
@@ -42,10 +46,19 @@ p{
   font-size: 45px;
 }
 
-.messages{
-  width: 50%;
+.texting-box{
+  width: 30%;
   padding: 20px;
   border-radius: 30px;
   margin-bottom: 30px;
   background-color: navajowhite;
+}
+.width-container{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 10px;
 }

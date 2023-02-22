@@ -60,8 +60,9 @@ function App(){
 
   return(
     <div className='boxes-container'>
+    <div className='width-container'>
     { data && data.messages.items?.map((message, index)=>
-      <div key={index} className="messages">
+      <div key={index} className="texting-box">
             <p>id: {message.id}</p>
             <p>subject: {message.subject}</p>
             <div>body: 
@@ -80,6 +81,7 @@ function App(){
       
       )}
       <div>
+      </div>
       {pattern.boolean ? <Pattern id={pattern.messageId} setPattern={setPattern}/> : null}
       </div>
     </div>
