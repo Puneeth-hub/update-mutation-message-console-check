@@ -77,7 +77,7 @@ export default function Pattern({setPattern, id}){
     
 
     return(
-        <form className='model-container' onSubmit={(e)=>{
+        <form className='pattern-container' onSubmit={(e)=>{
             e.preventDefault()
             console.log("Data is on the way", formData)
             updateMutation({
@@ -95,26 +95,26 @@ export default function Pattern({setPattern, id}){
         <div className='title'>
             <h2>Update-Message</h2>
         </div>
-        <div className='model-mini-container'>
-            <div className='model-values'>
+        <div className='pattern-mini-container'>
+            <div className='pattern-values'>
                 <label>Id:</label><br/>
                 <input  value={data?.message?.id} readOnly></input>
             </div>
-            <div className='model-values'>
+            <div className='pattern-values'>
                 <label>Author:</label>
                 <input value={data?.message?.author.login} readOnly></input>
             </div>
         </div>
 
-        <div className="model-mini-container">
-                <div className="model-values">
+        <div className="pattern-mini-container">
+                <div className="pattern-values">
                     <label>Subject:</label><br />
                     <textarea value={formData?.subject} onChange={(e)=>{
                         handleChange('subject', e.target.value)
                     }}></textarea>
                 </div>
 
-                <div className="model-values">
+                <div className="pattern-values">
                     <label>Body:</label><br />
                     <textarea value={formData?.body} onChange={(e)=>{
                         handleChange('body', e.target.value)
@@ -122,27 +122,27 @@ export default function Pattern({setPattern, id}){
                 </div>
         </div>
 
-        <div className="model-mini-container">
-                <div className="model-values">
+        <div className="pattern-mini-container">
+                <div className="pattern-values">
                     <label>Language:</label><br />
                     <input value={data?.message?.language} readOnly></input>
                 </div>
 
-                <div className="model-values">
+                <div className="pattern-values">
                     <label>Views:</label><br />
                     <input value={data?.message?.metrics.views} readOnly></input>
                 </div>
         </div>
 
-        <div className="model-mini-container">
-                <div className="model-values">
+        <div className="pattern-mini-container">
+                <div className="pattern-values">
                     <label>Link:</label><br />
                     <div className="message-link">
                         <a href={data?.message?.view_href} target="_blank">{data?.message?.view_href}</a>
                     </div>
                 </div>
 
-                <div className="model-values">
+                <div className="pattern-values">
                     <label>Post Time:</label><br />
                     <textarea value={data?.message?.post_time}  readOnly></textarea>
                 </div>

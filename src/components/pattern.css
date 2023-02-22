@@ -13,7 +13,7 @@ code {
 }
 
 
-.model-container {
+.pattern-container {
   background-image: url('https://www.svgbackgrounds.com/wp-content/uploads/2021/05/subtle-prism-triangle-pattern.jpg');
   color: black;
   position: fixed;
@@ -28,7 +28,7 @@ code {
   overflow: scroll;
 }
 
-.model-mini-container {
+.pattern-mini-container {
   display: flex;
   align-items: start;
   margin-bottom: 10px;
@@ -57,7 +57,7 @@ input {
   color: black;
 }
 
-.model-values {
+.pattern-values {
   text-align: center;
   font-weight: bold;
 }
@@ -91,11 +91,7 @@ button {
   padding: 125px;
 }
 
-.read-or-hide {
-  color: darkblue;
-  font-weight: bold;
-  cursor: pointer;
-}
+
 
 .message-link {
   width: 188px;

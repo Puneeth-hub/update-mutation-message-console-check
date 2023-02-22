@@ -59,12 +59,12 @@ function App(){
   
 
   return(
-    <div className='message-container'>
+    <div className='boxes-container'>
     { data && data.messages.items?.map((message, index)=>
       <div key={index} className="messages">
-            <p><strong>id:  </strong>{message.id}</p>
-            <p><strong>subject:  </strong>{message.subject}</p>
-            <div><strong>body:  </strong>
+            <p>id: {message.id}</p>
+            <p>subject: {message.subject}</p>
+            <div>body: 
               {message.body.length >= 150 ? <checkMore prop={message.body} /> : message.body}
             </div>
             
